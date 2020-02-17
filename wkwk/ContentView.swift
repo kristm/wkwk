@@ -13,7 +13,7 @@ struct ContentView: View {
         VStack(alignment: .center, spacing: 0) {
             Image("spongerainbow").resizable().frame(width: 300, height: 300)
             Button(action: {
-                NSApplication.shared.terminate(self)
+                smile()
             })
             {
                 Text("Quit")
@@ -23,9 +23,14 @@ struct ContentView: View {
             .padding(.trailing, 10.0)
             .frame(width: 360.0, alignment: .top)
         }
+        .padding(0)
+        .frame(width: 360.0, height: 360.0, alignment: .top)
     }
 }
 
+private func smile() {
+    print("yaa")
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

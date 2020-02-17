@@ -35,5 +35,6 @@ class StatusBarController
         print("toggle over")
         window.center()
         window.makeKeyAndOrderFront(nil)
+        window.level = .floating
     }
 }
