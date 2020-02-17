@@ -10,8 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack(alignment: .center, spacing: 0) {
+            Image("spongerainbow").resizable().frame(width: 300, height: 300)
+            Button(action: {
+                NSApplication.shared.terminate(self)
+            })
+            {
+                Text("Quit")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+            }
+            .padding(.trailing, 10.0)
+            .frame(width: 360.0, alignment: .top)
+        }
     }
 }
 
