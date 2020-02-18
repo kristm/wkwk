@@ -19,16 +19,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
 
-        // Create the window and set the content view. 
+        // Create the window and set the content view.
+        // NOTE: Reinstantiating this window crashes the ap
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
-        window.center()
+//        window.center()
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         
-        statusBar = StatusBarController.init(window)
+        statusBar = StatusBarController.init()
     }
     
     @objc func onWakeNote(note: NSNotification) {
@@ -43,6 +44,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.level = .floating
     }
     
+    func showSponge() {
+        window.center()
+        window.makeKeyAndOrderFront(nil)
+        window.level = .floating
+        window.isReleasedWhenClosed = false
+    }
     
     func fileNotifications() {
         NSWorkspace.shared.notificationCenter.addObserver(
@@ -54,7 +61,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+//    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+//        return true
+//    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
     }
 }

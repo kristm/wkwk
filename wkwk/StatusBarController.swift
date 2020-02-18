@@ -12,15 +12,15 @@ class StatusBarController
 {
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
-    private var window: NSWindow
+//    private var window: NSWindow
     private var statusBarButton: NSStatusBarButton
     
-    init(_ window: NSWindow)
+    init()
     {
         statusBar = NSStatusBar.init()
         statusItem = statusBar.statusItem(withLength: 28.0)
         statusBarButton = statusItem.button!
-        self.window = window
+//        self.window = window
         
         statusBarButton.image = #imageLiteral(resourceName: "twinpopsies")
         statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
@@ -33,12 +33,12 @@ class StatusBarController
     @objc func togglePopover(sender: AnyObject)
     {
 //        This invokes app delegate methods
-//        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-//        appDelegate.setupWindow()
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.showSponge()
         
         print("toggle over")
-        window.center()
-        window.makeKeyAndOrderFront(nil)
-        window.level = .floating
+//        window.center()
+//        window.makeKeyAndOrderFront(nil)
+//        window.level = .floating
     }
 }
