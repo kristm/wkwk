@@ -32,6 +32,10 @@ class StatusBarController
         
     @objc func togglePopover(sender: AnyObject)
     {
+//        This invokes app delegate methods
+//        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+//        appDelegate.setupWindow()
+        
         print("toggle over")
         window.center()
         window.makeKeyAndOrderFront(nil)
