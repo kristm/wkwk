@@ -29,12 +29,17 @@ struct ContentView: View {
 }
 
 private func smile() {
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
     let date = Date()
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: date)
-    let status = hour <= 11 ? "1" : "2"
+    let status = hour <= 11 ? 0 : 1
+    let myStore: Store = Store.sharedInstance
+    
     NSPasteboard.general.clearContents()
-    NSPasteboard.general.setString("Imagination \(status)", forType: .string)
+    NSPasteboard.general.setString(myStore.requests[status], forType: .string)
+    
+    appDelegate.window.close()
 }
 
 struct ContentView_Previews: PreviewProvider {

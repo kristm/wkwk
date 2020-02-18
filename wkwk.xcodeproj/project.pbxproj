@@ -15,6 +15,7 @@
 		8961D33F23FAA42B002FA875 /* wkwkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D33E23FAA42B002FA875 /* wkwkTests.swift */; };
 		8961D34A23FAA42B002FA875 /* wkwkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D34923FAA42B002FA875 /* wkwkUITests.swift */; };
 		8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D35723FAAA0C002FA875 /* StatusBarController.swift */; };
+		89F6807B23FC098D008D1004 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6807A23FC098D008D1004 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		8961D34923FAA42B002FA875 /* wkwkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wkwkUITests.swift; sourceTree = "<group>"; };
 		8961D34B23FAA42B002FA875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8961D35723FAAA0C002FA875 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		89F6807A23FC098D008D1004 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				8961D32823FAA429002FA875 /* AppDelegate.swift */,
+				89F6807A23FC098D008D1004 /* Store.swift */,
 				8961D35723FAAA0C002FA875 /* StatusBarController.swift */,
 				8961D32A23FAA429002FA875 /* ContentView.swift */,
 				8961D32C23FAA42B002FA875 /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 				8961D32B23FAA429002FA875 /* ContentView.swift in Sources */,
 				8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */,
 				8961D32923FAA429002FA875 /* AppDelegate.swift in Sources */,
+				89F6807B23FC098D008D1004 /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = wkwk/wkwk.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"wkwk/Preview Content\"";
@@ -473,6 +478,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = HWS.wkwk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
