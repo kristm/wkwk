@@ -14,10 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var statusBar: StatusBarController?
+    var myStore: Store = Store.sharedInstance
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let contentView = ContentView().environmentObject(myStore)
 
         // Create the window and set the content view.
         // NOTE: Reinstantiating this window crashes the ap
@@ -30,18 +31,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView = NSHostingView(rootView: contentView)
         
         statusBar = StatusBarController.init()
+        fileNotifications()
     }
     
     @objc func onWakeNote(note: NSNotification) {
-            
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         print("wakey wakey \(hour)")
-//        myStore.msg = "wakey wakey \(hour) "
-        window.center()
-        window.makeKeyAndOrderFront(nil)
-        window.level = .floating
+        if (hour <= 11 || hour >= 19) {
+            myStore.status = (hour <= 11) ? "1" : "2"
+        
+            showSponge()
+        }
     }
     
     func showSponge() {
@@ -60,13 +62,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-//    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-//        return true
-//    }
     
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        return true
-    }
 }
 
+class Store: ObservableObject {
+    static let sharedInstance = Store()
+    @Published var status: String = "1"
+}

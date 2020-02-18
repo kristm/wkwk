@@ -9,14 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var myStore: Store
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image("spongerainbow").resizable().frame(width: 300, height: 300)
             Button(action: {
-                smile()
+                smile(self.myStore.status)
             })
             {
-                Text("Quit")
+                Text("Imagination")
                     .font(.caption)
                     .fontWeight(.semibold)
             }
@@ -28,8 +30,10 @@ struct ContentView: View {
     }
 }
 
-private func smile() {
-    print("yaa")
+private func smile(_ status: String) {
+
+    NSPasteboard.general.clearContents()
+    NSPasteboard.general.setString("Imagination \(status)", forType: .string)
 }
 
 struct ContentView_Previews: PreviewProvider {
