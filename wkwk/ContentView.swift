@@ -9,13 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var myStore: Store
-    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Image("spongerainbow").resizable().frame(width: 300, height: 300)
             Button(action: {
-                smile(self.myStore.status)
+                smile()
             })
             {
                 Text("Imagination")
@@ -30,8 +28,11 @@ struct ContentView: View {
     }
 }
 
-private func smile(_ status: String) {
-
+private func smile() {
+    let date = Date()
+    let calendar = Calendar.current
+    let hour = calendar.component(.hour, from: date)
+    let status = hour <= 11 ? "1" : "2"
     NSPasteboard.general.clearContents()
     NSPasteboard.general.setString("Imagination \(status)", forType: .string)
 }

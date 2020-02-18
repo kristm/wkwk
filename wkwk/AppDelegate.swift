@@ -14,11 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var statusBar: StatusBarController?
-    var myStore: Store = Store.sharedInstance
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView().environmentObject(myStore)
+        let contentView = ContentView()
 
         // Create the window and set the content view.
         // NOTE: Reinstantiating this window crashes the ap
@@ -40,8 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let hour = calendar.component(.hour, from: date)
         print("wakey wakey \(hour)")
         if (hour <= 11 || hour >= 19) {
-            myStore.status = (hour <= 11) ? "1" : "2"
-        
             showSponge()
         }
     }
@@ -63,9 +60,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-}
-
-class Store: ObservableObject {
-    static let sharedInstance = Store()
-    @Published var status: String = "1"
 }

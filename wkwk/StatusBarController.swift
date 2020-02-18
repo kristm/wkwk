@@ -12,7 +12,6 @@ class StatusBarController
 {
     private var statusBar: NSStatusBar
     private var statusItem: NSStatusItem
-//    private var window: NSWindow
     private var statusBarButton: NSStatusBarButton
     
     init()
@@ -20,7 +19,6 @@ class StatusBarController
         statusBar = NSStatusBar.init()
         statusItem = statusBar.statusItem(withLength: 28.0)
         statusBarButton = statusItem.button!
-//        self.window = window
         
         statusBarButton.image = #imageLiteral(resourceName: "twinpopsies")
         statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
@@ -37,8 +35,5 @@ class StatusBarController
         appDelegate.showSponge()
         
         print("toggle over")
-//        window.center()
-//        window.makeKeyAndOrderFront(nil)
-//        window.level = .floating
     }
 }
