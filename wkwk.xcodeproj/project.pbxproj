@@ -16,6 +16,7 @@
 		8961D33F23FAA42B002FA875 /* wkwkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D33E23FAA42B002FA875 /* wkwkTests.swift */; };
 		8961D34A23FAA42B002FA875 /* wkwkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D34923FAA42B002FA875 /* wkwkUITests.swift */; };
 		8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D35723FAAA0C002FA875 /* StatusBarController.swift */; };
+		89F393CC240FBF910019DCBA /* Store.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89F393CA240FBF910019DCBA /* Store.xcdatamodeld */; };
 		89F6807B23FC098D008D1004 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6807A23FC098D008D1004 /* Config.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		8961D34923FAA42B002FA875 /* wkwkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wkwkUITests.swift; sourceTree = "<group>"; };
 		8961D34B23FAA42B002FA875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8961D35723FAAA0C002FA875 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		89F393CB240FBF910019DCBA /* Store.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Store.xcdatamodel; sourceTree = "<group>"; };
 		89F6807A23FC098D008D1004 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				8961D33423FAA42B002FA875 /* Info.plist */,
 				8961D33523FAA42B002FA875 /* wkwk.entitlements */,
 				8961D32E23FAA42B002FA875 /* Preview Content */,
+				89F393CA240FBF910019DCBA /* Store.xcdatamodeld */,
 			);
 			path = wkwk;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				8961D32B23FAA429002FA875 /* ContentView.swift in Sources */,
 				8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */,
+				89F393CC240FBF910019DCBA /* Store.xcdatamodeld in Sources */,
 				8961D32923FAA429002FA875 /* AppDelegate.swift in Sources */,
 				89F6807B23FC098D008D1004 /* Config.swift in Sources */,
 			);
@@ -611,6 +615,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89F393CA240FBF910019DCBA /* Store.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89F393CB240FBF910019DCBA /* Store.xcdatamodel */,
+			);
+			currentVersion = 89F393CB240FBF910019DCBA /* Store.xcdatamodel */;
+			path = Store.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8961D31D23FAA429002FA875 /* Project object */;
 }
