@@ -34,10 +34,10 @@ private func smile() {
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: date)
     let status = hour <= 11 ? 0 : 1
-    let myStore: Store = Store.sharedInstance
+    let myConfig: Config = Config.sharedInstance
     
     NSPasteboard.general.clearContents()
-    NSPasteboard.general.setString(myStore.requests[status], forType: .string)
+    NSPasteboard.general.setString(myConfig.requests[status], forType: .string)
     
     appDelegate.window.close()
 }

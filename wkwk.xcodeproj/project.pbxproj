@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89062F6A23FD536C000A7215 /* wkwk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89062F6923FD536C000A7215 /* wkwk.plist */; };
 		8961D32923FAA429002FA875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D32823FAA429002FA875 /* AppDelegate.swift */; };
 		8961D32B23FAA429002FA875 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D32A23FAA429002FA875 /* ContentView.swift */; };
 		8961D32D23FAA42B002FA875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8961D32C23FAA42B002FA875 /* Assets.xcassets */; };
@@ -15,7 +16,7 @@
 		8961D33F23FAA42B002FA875 /* wkwkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D33E23FAA42B002FA875 /* wkwkTests.swift */; };
 		8961D34A23FAA42B002FA875 /* wkwkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D34923FAA42B002FA875 /* wkwkUITests.swift */; };
 		8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961D35723FAAA0C002FA875 /* StatusBarController.swift */; };
-		89F6807B23FC098D008D1004 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6807A23FC098D008D1004 /* Store.swift */; };
+		89F6807B23FC098D008D1004 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6807A23FC098D008D1004 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89062F6923FD536C000A7215 /* wkwk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = wkwk.plist; sourceTree = "<group>"; };
 		8961D32523FAA429002FA875 /* wkwk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wkwk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8961D32823FAA429002FA875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8961D32A23FAA429002FA875 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,7 +53,7 @@
 		8961D34923FAA42B002FA875 /* wkwkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wkwkUITests.swift; sourceTree = "<group>"; };
 		8961D34B23FAA42B002FA875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8961D35723FAAA0C002FA875 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		89F6807A23FC098D008D1004 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		89F6807A23FC098D008D1004 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				8961D32823FAA429002FA875 /* AppDelegate.swift */,
-				89F6807A23FC098D008D1004 /* Store.swift */,
+				89F6807A23FC098D008D1004 /* Config.swift */,
+				89062F6923FD536C000A7215 /* wkwk.plist */,
 				8961D35723FAAA0C002FA875 /* StatusBarController.swift */,
 				8961D32A23FAA429002FA875 /* ContentView.swift */,
 				8961D32C23FAA42B002FA875 /* Assets.xcassets */,
@@ -245,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89062F6A23FD536C000A7215 /* wkwk.plist in Resources */,
 				8961D33323FAA42B002FA875 /* Main.storyboard in Resources */,
 				8961D33023FAA42B002FA875 /* Preview Assets.xcassets in Resources */,
 				8961D32D23FAA42B002FA875 /* Assets.xcassets in Resources */,
@@ -275,7 +279,7 @@
 				8961D32B23FAA429002FA875 /* ContentView.swift in Sources */,
 				8961D35823FAAA0C002FA875 /* StatusBarController.swift in Sources */,
 				8961D32923FAA429002FA875 /* AppDelegate.swift in Sources */,
-				89F6807B23FC098D008D1004 /* Store.swift in Sources */,
+				89F6807B23FC098D008D1004 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
