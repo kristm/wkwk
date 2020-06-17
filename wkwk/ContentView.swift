@@ -32,12 +32,19 @@ private func smile() {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     let date = Date()
     let calendar = Calendar.current
+    
     let hour = calendar.component(.hour, from: date)
+    //let minute = calendar.component(.minute, from: date)
+    
     let status = hour <= 11 ? 0 : 1
     let myConfig: Config = Config.sharedInstance
     
     NSPasteboard.general.clearContents()
     NSPasteboard.general.setString(myConfig.requests[status], forType: .string)
+
+    myConfig.setTime(time: date)
+    print(">> \(myConfig.getTime())")
+    //print("time \(myConfig.getTime())")
     
     appDelegate.window.close()
 }
