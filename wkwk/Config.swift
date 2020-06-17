@@ -24,6 +24,10 @@ class Config: ObservableObject {
             self.timeIn = time
         }
     }
+    
+    func resetTime() {
+        self.timeIn = nil
+    }
 
 
     func getTime() -> String {

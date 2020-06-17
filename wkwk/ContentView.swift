@@ -9,9 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    let myConfig: Config = Config.sharedInstance
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            Image("spongerainbow").resizable().frame(width: 300, height: 300)
+            ZStack(alignment: .top) {
+                Image("spongerainbow").resizable().frame(width: 300, height: 300)
+
+                Text(myConfig.getTime())
+                    .font(.system(size: 32))
+                    .foregroundColor(.white)
+                    .shadow(radius: 1)
+                    .padding(40)
+
+            }
             Button(action: {
                 smile()
             })
@@ -34,7 +44,6 @@ private func smile() {
     let calendar = Calendar.current
     
     let hour = calendar.component(.hour, from: date)
-    //let minute = calendar.component(.minute, from: date)
     
     let status = hour <= 11 ? 0 : 1
     let myConfig: Config = Config.sharedInstance
@@ -43,8 +52,11 @@ private func smile() {
     NSPasteboard.general.setString(myConfig.requests[status], forType: .string)
 
     myConfig.setTime(time: date)
-    print(">> \(myConfig.getTime())")
-    //print("time \(myConfig.getTime())")
+    
+    if status == 1 {
+        print(">> \(myConfig.getTime())")
+        // myConfig.resetTime()
+    }
     
     appDelegate.window.close()
 }
