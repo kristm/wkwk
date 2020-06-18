@@ -7,13 +7,15 @@
 //
 
 import Foundation
+//import Combine
 
 class Config: ObservableObject {
-    static let sharedInstance = Config()
+    //static let sharedInstance = Config()
     var nsDictionary: NSDictionary?
     @Published var requests: [String]
     @Published var timeIn: Date? = nil
     @Published var lapsedTime: String = "00:00"
+//    let objectWillChange = ObservableObjectPublisher()
     
     init() {
         let dict = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "wkwk", ofType: "plist")!)
@@ -33,9 +35,9 @@ class Config: ObservableObject {
 
 
     func getTime() -> String {
-//        DispatchQueue.main.sync {
-//            self.lapsedTime = "mmmm"
-//        }
+        
+        
+        print("GET TIME\(self.lapsedTime)")
         let date = Date()
         print("timein \(String(describing: self.timeIn))")
 
@@ -44,7 +46,8 @@ class Config: ObservableObject {
         let minutes = (ti / 60) % 60
         let hours = (ti / 3600)
 
-        return String(format: "%0.2d:%0.2d", hours, minutes)
+        self.lapsedTime = String(format: "%0.2d:%0.2d", hours, minutes)
+        return self.lapsedTime
     }
 }
 

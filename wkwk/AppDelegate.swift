@@ -14,11 +14,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var statusBar: StatusBarController?
-    let myConfig: Config = Config.sharedInstance
+//    let myConfig: Config = Config.sharedInstance
+    @ObservedObject var myConfig: Config = Config()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let contentView = ContentView().environmentObject(myConfig)
+        
 
         // Create the window and set the content view.
         // NOTE: Reinstantiating this window crashes the ap
@@ -39,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let today = calendar.component(.day, from :date)
+        
         if myConfig.timeIn != nil {
             let loggedDay = calendar.component(.day, from: myConfig.timeIn ?? Date())
             if today < loggedDay {
@@ -52,8 +55,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func showSponge() {
+//        myConfig.lapsedTime = "ZZZ"
         print(">\(myConfig.getTime()) \(myConfig.lapsedTime)")
-        //myConfig.lapsedTime = "Meow"
+        
+        myConfig.getTime()
+//        myConfig.lapsedTime = "Meow"
+        
         window.center()
         window.makeKeyAndOrderFront(nil)
         window.level = .floating

@@ -10,14 +10,17 @@ import SwiftUI
 
 struct ContentView: View {
     //let myConfig: Config = Config.sharedInstance
-    @ObservedObject var myConfig = Config()
+    //@ObservedObject var myConfig: Config = Config()
+    @EnvironmentObject var ac: Config
+//    @EnvironmentObject var myConfig: Config
+    //@Binding var lapsedTime: String
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .top) {
                 Image("spongerainbow").resizable().frame(width: 300, height: 300)
 
-                Text(myConfig.lapsedTime)
+                Text(ac.lapsedTime)
                     .font(.system(size: 32))
                     .foregroundColor(.white)
                     .shadow(radius: 1)
@@ -25,7 +28,9 @@ struct ContentView: View {
 
             }
             Button(action: {
-                smile()
+//                self.myConfig.lapsedTime = "YYY"
+//                self.myConfig.getTime()
+                smile(env: self.ac)
             })
             {
                 Text("Imagination")
@@ -40,7 +45,7 @@ struct ContentView: View {
     }
 }
 
-private func smile() {
+private func smile(env: Config) {
     
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     let date = Date()
@@ -49,15 +54,16 @@ private func smile() {
     let hour = calendar.component(.hour, from: date)
     
     let status = hour <= 11 ? 0 : 1
-    let myConfig: Config = Config.sharedInstance
+    //let myConfig: Config = Config.sharedInstance
+    //let myConfig: Config = Config()
     
     NSPasteboard.general.clearContents()
-    NSPasteboard.general.setString(myConfig.requests[status], forType: .string)
+    NSPasteboard.general.setString(env.requests[status], forType: .string)
 
-    myConfig.setTime(time: date)
+    env.setTime(time: date)
     
     if status == 1 {
-        print(">> \(myConfig.getTime())")
+        print(">> \(env.getTime())")
         // myConfig.resetTime()
     }
     
@@ -66,6 +72,6 @@ private func smile() {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(Config())
     }
 }
