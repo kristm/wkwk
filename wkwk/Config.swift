@@ -7,15 +7,12 @@
 //
 
 import Foundation
-//import Combine
 
 class Config: ObservableObject {
-    //static let sharedInstance = Config()
     var nsDictionary: NSDictionary?
     @Published var requests: [String]
     @Published var timeIn: Date? = nil
     @Published var lapsedTime: String = "00:00"
-//    let objectWillChange = ObservableObjectPublisher()
     
     init() {
         let dict = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "wkwk", ofType: "plist")!)

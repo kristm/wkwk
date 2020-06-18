@@ -55,11 +55,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func showSponge() {
-//        myConfig.lapsedTime = "ZZZ"
         print(">\(myConfig.getTime()) \(myConfig.lapsedTime)")
         
         myConfig.getTime()
-//        myConfig.lapsedTime = "Meow"
         
         window.center()
         window.makeKeyAndOrderFront(nil)

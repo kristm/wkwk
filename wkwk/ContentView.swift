@@ -9,11 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    //let myConfig: Config = Config.sharedInstance
-    //@ObservedObject var myConfig: Config = Config()
     @EnvironmentObject var ac: Config
-//    @EnvironmentObject var myConfig: Config
-    //@Binding var lapsedTime: String
     let timer = Timer.publish(every: 60, on: .current, in: .common).autoconnect()
     @State var isViewDisplayed = false
     
@@ -21,18 +17,13 @@ struct ContentView: View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .top) {
                 Image("spongerainbow").resizable().frame(width: 300, height: 300)
-                Group {
-                    Text(ac.lapsedTime)
-                    .font(.system(size: 32))
-                    .foregroundColor(.white)
-                    .shadow(radius: 1)
-                    .padding(40)
-//                    .onReceive(timer, perform: { self.ac.getTime() })
-                }
                 
-
-        
-
+                Text(ac.lapsedTime)
+                .font(.system(size: 32))
+                .foregroundColor(.white)
+                .shadow(radius: 1)
+                .padding(40)
+                
             }.onReceive(timer, perform: { time in
                 print("receive\(time)")
 
@@ -41,8 +32,6 @@ struct ContentView: View {
                 }
             })
             Button(action: {
-//                self.myConfig.lapsedTime = "YYY"
-//                self.myConfig.getTime()
                 smile(env: self.ac)
             })
             {
@@ -76,8 +65,6 @@ private func smile(env: Config) {
     let hour = calendar.component(.hour, from: date)
     
     let status = hour <= 11 ? 0 : 1
-    //let myConfig: Config = Config.sharedInstance
-    //let myConfig: Config = Config()
     
     NSPasteboard.general.clearContents()
     NSPasteboard.general.setString(env.requests[status], forType: .string)
@@ -89,7 +76,7 @@ private func smile(env: Config) {
         // myConfig.resetTime()
     }
     
-//    appDelegate.window.close()
+    appDelegate.window.close()
 }
 
 struct ContentView_Previews: PreviewProvider {
