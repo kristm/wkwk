@@ -14,19 +14,32 @@ struct ContentView: View {
     @EnvironmentObject var ac: Config
 //    @EnvironmentObject var myConfig: Config
     //@Binding var lapsedTime: String
+    let timer = Timer.publish(every: 60, on: .current, in: .common).autoconnect()
+    @State var isViewDisplayed = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .top) {
                 Image("spongerainbow").resizable().frame(width: 300, height: 300)
-
-                Text(ac.lapsedTime)
+                Group {
+                    Text(ac.lapsedTime)
                     .font(.system(size: 32))
                     .foregroundColor(.white)
                     .shadow(radius: 1)
                     .padding(40)
+//                    .onReceive(timer, perform: { self.ac.getTime() })
+                }
+                
 
-            }
+        
+
+            }.onReceive(timer, perform: { time in
+                print("receive\(time)")
+
+                if self.isViewDisplayed {
+                    self.ac.getTime()
+                }
+            })
             Button(action: {
 //                self.myConfig.lapsedTime = "YYY"
 //                self.myConfig.getTime()
@@ -40,8 +53,17 @@ struct ContentView: View {
             .padding(.trailing, 10.0)
             .frame(width: 360.0, alignment: .top)
         }
+        
         .padding(0)
         .frame(width: 360.0, height: 360.0, alignment: .top)
+        .onAppear{
+            self.isViewDisplayed = true
+        }
+        .onDisappear{
+            self.isViewDisplayed = false
+        }
+        
+        
     }
 }
 
