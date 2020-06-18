@@ -9,13 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    let myConfig: Config = Config.sharedInstance
+    //let myConfig: Config = Config.sharedInstance
+    @ObservedObject var myConfig = Config()
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .top) {
                 Image("spongerainbow").resizable().frame(width: 300, height: 300)
 
-                Text(myConfig.getTime())
+                Text(myConfig.lapsedTime)
                     .font(.system(size: 32))
                     .foregroundColor(.white)
                     .shadow(radius: 1)
@@ -39,6 +41,7 @@ struct ContentView: View {
 }
 
 private func smile() {
+    
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     let date = Date()
     let calendar = Calendar.current
@@ -58,7 +61,7 @@ private func smile() {
         // myConfig.resetTime()
     }
     
-    appDelegate.window.close()
+//    appDelegate.window.close()
 }
 
 struct ContentView_Previews: PreviewProvider {

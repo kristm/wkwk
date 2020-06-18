@@ -12,7 +12,8 @@ class Config: ObservableObject {
     static let sharedInstance = Config()
     var nsDictionary: NSDictionary?
     @Published var requests: [String]
-    var timeIn: Date? = nil
+    @Published var timeIn: Date? = nil
+    @Published var lapsedTime: String = "00:00"
     
     init() {
         let dict = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "wkwk", ofType: "plist")!)
@@ -20,6 +21,7 @@ class Config: ObservableObject {
     }
     
     func setTime(time: Date) {
+        print("check time \(String(describing: self.timeIn))")
         if self.timeIn == nil {
             self.timeIn = time
         }
@@ -31,6 +33,9 @@ class Config: ObservableObject {
 
 
     func getTime() -> String {
+//        DispatchQueue.main.sync {
+//            self.lapsedTime = "mmmm"
+//        }
         let date = Date()
         print("timein \(String(describing: self.timeIn))")
 

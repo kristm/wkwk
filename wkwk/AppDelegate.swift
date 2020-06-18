@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var statusBar: StatusBarController?
+    let myConfig: Config = Config.sharedInstance
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
@@ -37,6 +38,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
+        let today = calendar.component(.day, from :date)
+        if myConfig.timeIn != nil {
+            let loggedDay = calendar.component(.day, from: myConfig.timeIn ?? Date())
+            if today < loggedDay {
+                myConfig.resetTime()
+            }
+        }
         print("wakey wakey \(hour)")
         if (hour <= 11 || hour >= 19) {
             showSponge()
@@ -44,6 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func showSponge() {
+        print(">\(myConfig.getTime()) \(myConfig.lapsedTime)")
+        //myConfig.lapsedTime = "Meow"
         window.center()
         window.makeKeyAndOrderFront(nil)
         window.level = .floating
