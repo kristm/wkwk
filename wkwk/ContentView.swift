@@ -12,6 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var ac: Config
     let timer = Timer.publish(every: 60, on: .current, in: .common).autoconnect()
     @State var isViewDisplayed = false
+    @State var tappedOut = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -19,8 +20,8 @@ struct ContentView: View {
                 Image("spongerainbow").resizable().frame(width: 300, height: 300)
                 
                 Text(ac.lapsedTime)
-                .font(.system(size: 32))
-                .foregroundColor(.white)
+                    .font(.system(size: self.tappedOut ? 48 : 32))
+                    .foregroundColor(self.tappedOut ? .pink  : .white)
                 .shadow(radius: 1)
                 .padding(40)
                 
@@ -32,6 +33,11 @@ struct ContentView: View {
                 }
             })
             Button(action: {
+                if (self.ac.timeIn != nil) {
+                    self.tappedOut = true
+                } else {
+                    self.tappedOut = false
+                }
                 smile(env: self.ac)
             })
             {
@@ -47,6 +53,9 @@ struct ContentView: View {
         .frame(width: 360.0, height: 360.0, alignment: .top)
         .onAppear{
             self.isViewDisplayed = true
+            if self.ac.timeIn == nil {
+                self.tappedOut = false
+            }
         }
         .onDisappear{
             self.isViewDisplayed = false
