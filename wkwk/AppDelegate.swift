@@ -41,10 +41,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let today = calendar.component(.day, from :date)
-        
+        NSLog("onwake %v", today)
         if myConfig.timeIn != nil {
-            let loggedDay = calendar.component(.day, from: myConfig.timeIn ?? Date())
-            if today < loggedDay {
+            let loggedDay = myConfig.timeIn ?? Date()
+            print("last logged day \(loggedDay) - \(today)")
+            if date > loggedDay {
                 myConfig.resetTime()
             }
         }
