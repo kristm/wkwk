@@ -14,7 +14,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
     var statusBar: StatusBarController?
-//    let myConfig: Config = Config.sharedInstance
     @ObservedObject var myConfig: Config = Config()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -39,13 +38,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func onWakeNote(note: NSNotification) {
         let date = Date()
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
+        let hour = calendar.component(.hour, from :date)
         let today = calendar.component(.day, from :date)
+        let month = calendar.component(.month, from :date)
         NSLog("onwake %v", today)
         if myConfig.timeIn != nil {
-            let loggedDay = myConfig.timeIn ?? Date()
-            print("last logged day \(loggedDay) - \(today)")
-            if date > loggedDay {
+            let loggedDate = myConfig.timeIn ?? Date()
+            let loggedInDay = calendar.component(.day, from :loggedDate)
+            let loggedInMonth = calendar.component(.month, from :loggedDate)
+            print("last logged day \(loggedInDay) - \(today)")
+            if today > loggedInDay || month > loggedInMonth {
                 myConfig.resetTime()
             }
         }
